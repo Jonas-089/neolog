@@ -1,0 +1,10 @@
+{% extends "definitionen/base.html" %}
+{% block content %}
+    <h2>Du hast dich abgemeldet.</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Willst du dich wieder anmelden?<a href="{% url 'login'  %}"> Anmelden</a>
+        </small>
+
+    </div>
+{% endblock content %}

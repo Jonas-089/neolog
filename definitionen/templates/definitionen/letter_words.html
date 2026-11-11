@@ -1,0 +1,17 @@
+{% extends "definitionen/base.html" %}
+{% block content %}
+    {% if route in legal_characters %}
+        <h1>{{ route }}</h1>
+        {% for word in words %}
+            <div>
+                <a class="article-title" href="{% url 'one-word' word.word %}">{{ word.display_title }}</a>
+            </div>
+        {% endfor %}
+        {% if not words %}
+            <p>Zu diesem Buchstaben gibt es im Wörterbuch noch keine Wörter!<br>Möchtest du eins
+            <a class="link" href="{% url 'create-definition' %}">hinzufügen</a>?</p>
+        {% endif %}
+    {% else %}
+        <h2>Dieser Buchstabe scheint nicht zu existieren...</h2>
+    {% endif %}
+{% endblock content %}

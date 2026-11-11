@@ -1,0 +1,85 @@
+(<> Klammern bedeuten variablen Namen)
+
+Wichtige Kommandozeilen-Befehle:
+
+    Server laufen lassen:
+        - python manage.py runserver
+    App erstellen:
+        - python manage.py startapp <appname>
+
+
+Allgemein:
+
+    Sachen erstellen:
+        - drei Schritte benötigt: URL, view, template
+
+
+Apps:
+
+    migrations:
+        - automatisch erstellte Datenbank-Files
+
+    static/<app-name> (optional):
+        -  CSS styling
+
+    templates/<app-name>:
+        - enthält alle Templates, die für eine Website benötigt werden
+
+    views.py:
+        - die eigentliche Logik. Empfängt URL-Weiterleitung und verarbeitet Input
+
+        function based views:
+            - erhalten Argumente und geben gerendertes HTML-Template (ja?) zurück
+            - context-Dictionary, um Argumente an HTML-Template zu übergeben
+
+        class based views:
+            - Views basieren auf Klassen
+            - es gibt, je nach Funktionalität, verschiedene Arten von Views: ListView, CreateView, UpdateView...
+            - gucken default nach Templates mit Namen <app>/<model>_<viewtype>.html
+
+    models.py:
+        - Klassenrepräsentation und -verwaltung von Relationen in der Datenbank
+        - get_absolute_url(): verbindet ein Modell (variabel) zu einer URL (z.B. Nutzer zu seinem Profil)
+
+    static:
+        - folder of static files for styling, for example main.css
+
+
+Database:
+
+    migrating: Muss gemacht werden, damit Datenbank-Änderungen live gehen (ja?)
+        - python manage.py makemigrations
+        - python manage.py migrate
+
+    Datenbank durchsuchen:
+        - in Shell gehen:
+            python manage.py shell
+        - Object Relational Model (ORM) vorbereiten:
+            from <appname>.models import <modelname>
+            from django.contrib.auth.models import User
+        - Suchstruktur: <modelname>.objects.<methodenname>('<attributname>')
+        - ein paar Befehle: all(), first(), last(), filter('<attributname>')
+        - Beispiel - Definition (Post) erstellen:
+            inshallah = Post(title='inshallah', content='arabisch für hoffentlich', author=<user>)
+            inshallah.save()
+
+
+User Registration:
+
+    form:
+        - UserRegistrationForm in users app overrides UserCreationForm to add an email address
+        - crispy-forms is used to style the form
+
+
+Questionas:
+
+    routing:
+        - whats the difference between render, include etc.?
+
+    database:
+        - whats the migration file 0002 in blog/migrations doing? why is it being created when making migrations?
+
+
+Skipped in Corey Schafer Tutorial:
+    - Part  7 30:00 - Part 10 00:00
+    - Part 10 33:00 - Part 10 47:00

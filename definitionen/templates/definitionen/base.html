@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS (lokal ausgeliefert) -->
+    <link rel="stylesheet" href="{% static 'definitionen/vendor/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'definitionen/main.css' %}">
+
+    {% if title %}
+        <title>neolog - {{ title }}</title>
+    {% else %}
+        <title>neolog</title>
+    {% endif %}
+</head>
+<body>
+
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand logo mr-4" href="{% url 'all-words' %}">neolog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{% url 'all-words' %}">Wörterbuch</a>
+              <form class="nav-search" method="get" action="{% url 'homepage' %}">
+                <a class="nav-item nav-link" href="{% url 'homepage' %}">
+                  <svg class="search-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="10.2" y1="10.2" x2="15" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span class="nav-search-label">Suche</span>
+                </a>
+                <input class="nav-search-input" type="text" name="q" placeholder="Wort suchen..." aria-label="Wort suchen">
+              </form>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                <a class="btn btn-sm nav-add-btn mr-2" href="{% url 'create-definition' %}">Definition hinzufügen</a>
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'profile' user %}">Profil</a>
+                <form method="post" action="{% url 'logout' %}" class="form-inline">
+                  {% csrf_token %}
+                  <button type="submit" class="nav-item nav-link btn btn-link">Abmelden</button>
+                </form>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Anmelden</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Registrieren</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer container">
+      <a href="{% url 'impressum' %}">Impressum</a>
+      &middot;
+      <a href="{% url 'datenschutz' %}">Datenschutz</a>
+    </footer>
+
+    <!-- JavaScript lokal ausgeliefert (kein externes CDN, damit keine IP-Adressen an Dritte gehen) -->
+    <script src="{% static 'definitionen/vendor/jquery-3.2.1.slim.min.js' %}"></script>
+    <script src="{% static 'definitionen/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'definitionen/vendor/bootstrap.min.js' %}"></script>
+</body>
+</html>

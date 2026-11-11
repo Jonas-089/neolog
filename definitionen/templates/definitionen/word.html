@@ -1,0 +1,42 @@
+{% extends "definitionen/base.html" %}
+
+{% block content %}
+
+{% if definitions %}
+
+        {% for definition in definitions %}
+            <div>
+                <article class="media form-box word-box">
+                  <div class="media-body">
+                    <div class="article-metadata">
+                      <h5>{{ definition.title }}</h5>
+                      {% if not definition.is_anonym %}
+                      <a class="mr-2" href="{% url 'profile' definition.author %}">{{ definition.author }}</a>
+                      {% endif %}
+                      <small class="text-muted">{{ definition.date_posted|date:"d.m.Y" }}</small>
+                    </div>
+                    <p class="article-content"><b>Definition:</b><br/> {{ definition.content }}</p>
+                        <p class="article-content"><b>Beispiel:</b><br/> {{ definition.example }}</p>
+                    <div>
+                      <form action="{% url 'like-definition' definition.pk %}" method="POST">
+	                      {% csrf_token %}
+	                      <button type="submit" name="definition_id" value="{{definition.id}}" class="btn mr-1">
+                        👍 {{ definition.likes }}
+                        </button>
+                        <button type="submit" name="definition_id" value="{{definition.id}}" class="btn mr-1" formaction="{% url 'dislike-definition' definition.pk %}">
+                          👎 {{ definition.dislikes }}
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </article>
+            </div>
+        {% endfor %}
+
+{% else %}
+
+    <h2>Diese Seite existiert nicht...</h2>
+
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "definitionen/base.html" %}
+{% block content %}
+    {% if current_user == user %}
+        <a class="btn" href="{% url 'edit-profile' %}">Profil bearbeiten</a>
+    {% endif %}
+    <div class="content-section">
+        <h2 class="account-heading">{{ user }}</h2>
+        <p class="text-secondary">
+              Mitglied seit: {{ user.date_joined.day }}.{{ user.date_joined.month }}.{{ user.date_joined.year }}
+        </p>
+    </div>
+    <div class="content-section">
+        {% for definition in definitions %}
+            <div>
+                <article class="content-section">
+                  <div class="media-body">
+                    <div class="article-metadata">
+                      <h5>{{ definition.title }}</h5>
+                      <small class="text-muted">{{ definition.date_posted|date:"d.m.Y" }}</small>
+                    </div>
+                    <p class="article-content"><b>Bedeutung:</b><br/> {{ definition.content }}</p>
+                        <p class="article-content"><b>Beispiel:</b><br/> {{ definition.example }}</p>
+                  </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

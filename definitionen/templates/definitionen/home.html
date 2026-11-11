@@ -1,0 +1,54 @@
+ <meta charset="UTF-8">
+{% extends "definitionen/base.html" %}
+{% block content %}
+    <h1>Wörterbuch</h1>
+    <br/>
+    <div class="search-bar mt-sm-2 mr-2">
+        <form method="get">
+            <input type="text" class="form-control" name="q" id="id_q" placeholder="Durchsuche das Wörterbuch..." value="{{ query }}">
+        </form>
+    </div>
+    {% if query and results %}
+        <h2>Ergebnisse</h2>
+        {% for result in results %}
+            <div>
+                <a class="article-title" href="{% url 'one-word' result %}">{{ result.display_title }}</a>
+            </div>
+        {% endfor %}
+        {% if is_paginated %}
+        
+            {% if page_obj.has_previous %}
+                <a class="btn page-btn btn-outline-info mb-4" href="?page=1">Erste</a>
+                <a class="btn page-btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Zurück</a>
+            {% endif %}
+            
+            {% for num in page_obj.paginator.page_range %}
+            
+                {% if page_obj.number == num %}
+                    <a class="btn page-btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+                    <a class="btn page-btn btn-outline-info mb-4" href="?page={{num}}">{{num}}</a>
+                {% endif %}
+                
+            {% endfor %}
+          
+            {% if page_obj.has_next %}
+                <a class="btn page-btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Weiter</a>
+                <a class="btn page-btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Letzte</a>
+            {% endif %}
+        {% endif %} 
+    {% elif query and not results %}
+        <!--<h3>Keine Ergebnisse</h3>-->
+        <p>Dieses Wort steht noch nicht im Wörterbuch. Möchtest du es
+            <a class="link" href="{% url 'create-definition' %}">hinzufügen</a>?
+        </p>
+    {% endif %}
+    {% if query and similars %}
+        <h3>Ähnliche Ergebnisse</h3>
+        {% for similar in similars %}
+        <div>
+                <a class="article-title" href="{% url 'one-word' similar %}">{{ similar.display_title }}</a>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}

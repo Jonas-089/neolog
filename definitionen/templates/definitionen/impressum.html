@@ -1,0 +1,34 @@
+{% extends "definitionen/base.html" %}
+{% block content %}
+<div class="content-section legal">
+    <h1>Impressum</h1>
+
+    <h4>Angaben gemäß § 5 DDG und § 18 Abs. 1 MStV</h4>
+    <p>
+        {% if impressum_name %}{{ impressum_name }}{% else %}[Vor- und Nachname]{% endif %}<br>
+        {% for zeile in impressum_adresse %}{{ zeile }}<br>{% empty %}[Straße und Hausnummer]<br>[PLZ und Ort]<br>{% endfor %}
+        Deutschland
+    </p>
+
+    <h4>Kontakt</h4>
+    <p>E-Mail: <a href="mailto:{{ impressum_email }}">{{ impressum_email }}</a></p>
+
+    <h4>Über dieses Angebot</h4>
+    <p>
+        neolog ist ein privates, nicht-kommerzielles Projekt. Die Definitionen im Wörterbuch werden von
+        Nutzerinnen und Nutzern geschrieben und geben deren Meinung wieder, nicht die des Betreibers.
+    </p>
+
+    <h4>Inhalte von Nutzern</h4>
+    <p>
+        Wir prüfen Beiträge nicht vor der Veröffentlichung. Wenn dir ein Beitrag auffällt, der gegen geltendes
+        Recht verstößt oder Rechte anderer verletzt, schreib uns bitte an die oben genannte E-Mail-Adresse.
+        Wir entfernen solche Inhalte, sobald wir davon erfahren.
+    </p>
+
+    <h4>Links auf andere Seiten</h4>
+    <p>
+        Für Inhalte externer Seiten, auf die verlinkt wird, sind ausschließlich deren Betreiber verantwortlich.
+    </p>
+</div>
+{% endblock content %}

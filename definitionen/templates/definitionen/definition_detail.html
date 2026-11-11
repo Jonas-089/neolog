@@ -1,0 +1,16 @@
+{% extends "definitionen/base.html" %}
+{% block content %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          {% if not object.is_anonym %}
+          <a class="mr-2" href="{% url 'profile' object.author %}">{{ object.author }}</a>
+          {% endif %}
+          <small class="text-muted">{{ object.date_posted|date:"d.m.Y" }}</small>
+        </div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content"><b>Definition:</b><br/> {{ object.content }}</p>
+            <p class="article-content"><b>Beispiel:</b><br/> {{ object.example }}</p>
+      </div>
+    </article>
+{% endblock content %}

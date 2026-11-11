@@ -1,0 +1,94 @@
+Make secret (?):
+- some variable in settings.py
+- user and email password in password reset settings in settings.py
+
+Allgemein:
+
+    todo - wörter hinzufügen
+    todo - Ideen ausdenken
+
+
+Frontend:
+
+    todo - Logo und Favicon hinzufügen (s. Ressourcen)
+    todo - refactor html templates for more reusability
+    todo - Seite insgesamt schön machen
+        todo - insbesondere: Home-Seite (Wörterbuch)
+        todo - Wörterseite (Definitionen)
+        todo - Definitionen auf Wörterseite im Kasten zentrieren
+        todo - paar sleeke (aber simple) Animationen
+    todo - add confirm message to updating profile
+    todo - add footer
+    todo - share button on posts
+
+
+Backend:
+
+    todo - Writing Tests
+        todo - profile
+            todo - profile url works
+            todo - users can edit their own profile
+            todo - users can't edit profiles of other users
+            todo - users cant edit the anonymous profile
+        todo - votes
+            posts are sorted by votes
+            clicking (dis-) like results in (lower) higher score
+        todo - search function
+        todo - login works (logging)
+        todo - registration works (creating user and redirect)
+        todo - password reset works
+        https://www.obeythetestinggoat.com/book/chapter_02_unittest.html
+        todo - viewing a profile as a logged in user works
+    todo - Profile
+        todo - let users delete their accounts
+    todo - likes/ dislikes
+        ajax?
+        django sessions for anonymous voting
+    todo - create blog
+    todo - report button
+    todo - robustness, bugs und QOL:
+        todo - Pagination
+        todo - Refactoring and reusing views/ templates (for example listing of words)
+        todo - Definition Creation Forms to German
+        todo - limiting definition text length
+        todo - remove word NICHT_ZUGEORDNET and dependencies/ find out how to hide it from entire site
+        todo - make navigation bar consistent (on some pages it displays "log out" even user is not logged in)
+        todo - improve search function (handle input better, use actual search algorithm etc.)
+
+
+
+Frontend erledigt:
+
+
+
+Backend erledigt:
+
+    hours 0-26
+        default-Benutzerprofil erstellen
+            bei Löschen von Profil werden nicht alle Definitionen gelöscht, sondern Autor auf den default gesetzt
+            Ermöglichen von Erstellen von Definitionen ohne Anmeldung
+        Wörterliste nach einzelnen Buchstaben sortieren
+        Wörter als einzelne Einheit
+        duplikate Case Sensitive Wörter entfernen
+        Sonderzeichen zu zugehörigen Buchstaben speichern
+        URL-Handling besser machen (nicht mehrere Buchstaben erlauben)
+    hours 26-32
+        writing tests
+            all urls work (except for profiles)
+            letters redirect to letter view (including sonderzeichen)
+            creating a definition works
+    hours 33-34
+        search function
+    hour 35
+        put edit profile view behind button and create "public" view on profile that everbody shares
+    hours 36-38
+        added like and dislike functionality
+    hours 39-40
+        separated word display title from internal word representation
+    hours 41-43
+        added password reset functionality
+    hour 44
+        changed website language to German
+
+
+

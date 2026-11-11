@@ -1,0 +1,397 @@
+body {
+  background: #f6b93b;
+  color: #000000;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #f6b93b;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #000000;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #d63a3a;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  border: 2px solid #000000;
+  border-radius: 12px;
+  padding: 16px 20px 8px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.article-title {
+  color: #000000;
+}
+
+a.article-title:hover {
+  color: #d63a3a;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+.site-footer {
+  border-top: 1px solid #dddddd;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  margin-top: 20px;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: #6c757d;
+}
+
+.site-footer a:hover {
+  color: #d63a3a;
+}
+
+.legal h4 {
+  margin-top: 1.2rem;
+  font-size: 1.15rem;
+}
+
+/* Standard-Layout aller Kästen: Seitenhintergrund, schwarz umrahmt, schwarze Schrift */
+.list-group-item,
+.list-group-item-light,
+.page-link,
+.dropdown-menu,
+.card,
+.modal-content {
+  background-color: transparent;
+  border: 2px solid #000000;
+  color: #000000;
+}
+
+.form-control,
+.form-control:focus {
+  background-color: #fde9b8;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: none;
+}
+
+.form-control::placeholder {
+  color: #6b5a2e;
+}
+
+.content-section a,
+.list-group-item {
+  color: #000000;
+}
+
+.content-section a:hover,
+.list-group-item:hover {
+  color: #d63a3a;
+  text-decoration: none;
+}
+
+.content-section .text-muted {
+  color: #5a4210 !important;
+}
+
+.content-section .article-metadata {
+  border-bottom: 2px solid #000000;
+  margin-bottom: 10px;
+}
+
+.content-section .article-metadata a {
+  font-weight: 600;
+}
+
+.form-control, .card, .modal-content, .dropdown-menu { border-radius: 12px; }
+.list-group-item { border-radius: 0; }
+.list-group-item + .list-group-item { border-top-width: 0; }
+.list-group-item:first-child { border-top-left-radius: 12px; border-top-right-radius: 12px; }
+.list-group-item:last-child { border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
+
+/* Logo: weiße Schreibmaschinen-Wortmarke auf schwarzem Kasten */
+.site-header .navbar-brand.logo {
+  font-family: "American Typewriter", "Courier New", Courier, monospace;
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+  color: #ffffff;
+  background: #000000;
+  padding: 3px 8px 5px;
+  border-radius: 0;
+  line-height: 1;
+}
+
+.site-header .navbar-brand.logo:hover {
+  color: #ffffff;
+}
+
+
+/* Alle Buttons: schwarz mit weißer Schrift, Hover/ausgewählt rot */
+.btn:not(.btn-link),
+.btn:not(.btn-link):focus {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.btn:not(.btn-link):hover {
+  background-color: #000000;
+  color: #d63a3a;
+}
+
+.btn:not(.btn-link):active,
+.btn.active,
+.page-btn.btn-info {
+  background-color: #d63a3a !important;
+  color: #ffffff !important;
+}
+
+/* Seitennavigation: ‹ 1 … 4 5 [6] 7 8 … 20 › */
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.page-btn {
+  min-width: 40px;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+.page-btn.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.pager-dots {
+  padding: 0 4px;
+  font-weight: 700;
+}
+
+/* Buchstaben-Trenner bei "Alle Wörter" */
+.letter-divider {
+  margin-top: 18px;
+  margin-bottom: 4px;
+  padding-bottom: 2px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-bottom: 2px solid #000000;
+}
+
+/* Lupe im Menü */
+.search-icon {
+  vertical-align: -1px;
+  margin-right: 2px;
+}
+
+/* "Springe zu" unter den Seitenzahlen */
+.jump-to {
+  margin-top: 4px;
+  margin-bottom: 24px;
+  line-height: 2;
+}
+
+.jump-label {
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.jump-to a {
+  color: #000000;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.jump-to a:hover {
+  color: #d63a3a;
+  text-decoration: none;
+}
+
+.jump-empty {
+  color: #a07a2a;
+  margin-right: 6px;
+}
+
+.letter-divider {
+  scroll-margin-top: 5rem;
+}
+
+/* Info-Boxen in hellem Gelb statt Blau */
+.alert-info {
+  background-color: #fde9b8;
+  border-color: #f3d48a;
+  color: #000000;
+}
+
+/* Formular-Kasten: Seitenhintergrund, schwarz umrahmt */
+.form-box {
+  border: 2px solid #000000;
+  border-radius: 12px;
+  padding: 16px 20px 4px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.form-box .form-control,
+.form-box .form-control:focus {
+  background-color: #fde9b8;
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+.form-box .form-control {
+  padding: 4px 10px;
+  font-size: 0.95rem;
+}
+
+.form-box input.form-control {
+  height: auto;
+}
+
+.form-box .form-control::placeholder {
+  color: #6b5a2e;
+}
+
+/* Button "Definition hinzufügen" im Menü, so klein wie die anderen Links */
+.site-header .nav-add-btn {
+  align-self: center;
+  padding: 4px 12px;
+  font-size: 1rem;
+}
+
+/* Einzelne Wortseiten: Definitionen im schwarz umrahmten Kasten */
+.word-box {
+  padding-bottom: 16px;
+}
+
+.word-box .article-metadata {
+  border-bottom: 2px solid #000000;
+  margin-bottom: 10px;
+}
+
+.word-box .article-metadata a {
+  color: #000000;
+  font-weight: 600;
+}
+
+.word-box .article-metadata a:hover {
+  color: #d63a3a;
+}
+
+.word-box .text-muted {
+  color: #5a4210 !important;
+}
+
+/* Suche im Menü: Suchfeld ersetzt beim Drüberfahren das Wort "Suche".
+   Fester Platz + nur Ein-/Ausblenden, damit nichts verrutscht oder zappelt. */
+.nav-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 220px;
+  margin: 0;
+}
+
+.nav-search-label {
+  transition: opacity 0.15s ease;
+}
+
+.nav-search-input {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;
+  padding: 2px 10px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  background: #f6b93b;
+  color: #000000;
+  font-size: 0.95rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.nav-search-input:focus {
+  outline: none;
+}
+
+.nav-search:hover .nav-search-label,
+.nav-search:focus-within .nav-search-label {
+  opacity: 0;
+}
+
+.nav-search:hover .nav-search-input,
+.nav-search:focus-within .nav-search-input {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Auf dem Handy (eingeklapptes Menü) ist das Feld immer sichtbar */
+@media (max-width: 767.98px) {
+  .nav-search .nav-search-label {
+    opacity: 0;
+  }
+
+  .nav-search-input {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

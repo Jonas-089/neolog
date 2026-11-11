@@ -1,0 +1,27 @@
+{% extends "definitionen/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Definition hinzufügen</h1>
+    {% if not user.is_authenticated %}
+        <div class="alert alert-info">
+            Du erstellst eine anonyme Definition. Wenn du willst, dass die Definition dir zugeorgnet wird,
+            <a href="{% url 'login' %}"> melde dich an</a> oder
+            <a href="{% url 'register' %}"> erstelle einen Account.</a>
+        </div>
+    {% endif %}
+    <div class="form-box">
+        <form method="POST">
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+
+            <div class="form-group">
+                <button class="btn" type="submit">Definition erstellen</button>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock content %}

@@ -1,0 +1,90 @@
+Benutzersicht:
+
+    Funktionalität:
+        - Benutzer können (müssen aber nicht) ein Profil anlegen
+        - Benutzer können Definitionen zu Wörtern geben (und Wörter erstellen)
+        - zu jedem Wort kann es beliebig viele Definitionen geben
+        - Wörter sind nach Alphabet sortiert
+
+    Admin-Page:
+        - (vor Veröffentlichung:) über http://127.0.0.1:8000/admin/
+        - alle Inhalte von Website einsehbar und bearbeitbar (neue Nutzer, neue Posts etc.)
+
+    Home-/ Landing Page:
+        - Wörterbuch
+        - Verzeichnis von Buchstaben
+        - man kann auf Buchstaben klicken und gelangt zu einer Seite mit allen Wörtern, die damit anfangen
+
+    Buchstabenseiten:
+        - alle Wörter mit zugehörigem Anfangsbuchstaben alphabetisch aufgelistet
+        - es gibt Duplikate, wenn sich nur Groß- Kleinschreibung unterscheidet
+
+    Seitenleiste:
+        - Definition erstellen
+        - Platzhalter
+
+    Mitmachen:
+        - lässt Definition anlegen
+        - wenn nicht eingeloggt, wird vorgeschlagen, sich anzumelden/ zu registrieren
+
+    About:
+        - leer
+
+
+Entwickler-Sicht:
+
+    Allgemein:
+        - Django-"Apps":
+            - Bezeichnung für verschiedene Funktionalitäten einer Website (z.B. Blog, Benutzerverwaltung etc.)
+            - haben immer eine sehr ähnliche Struktur:
+                - migrations: automatisch erstellte Files, die Struktur der Datenbank repräsentieren (ja?)
+                - templates/<appname>: enthalten alle HTML-Templates, die für die App gebraucht werden
+                - admin.py: Registrierung, sodass App in der admin-Sicht auf der Website auftaucht
+                - models.py: Datenbank-Modelle in Python-Sicht, auf deren Basis automatisch Datenbanken erstellt werden
+                - views.py: die eigentliche Logik. Empfängt URL-Weiterleitung und verarbeitet Input
+        - manage.py: Modul, über das Command-Line-Befehle ausgeführt werden (running server, database migrations etc.)
+        - db.sqlite3: zentrale Datenbank. Hat alle Informationen gespeichert (ja, alle?) (weiß nicht, wie zu öffnen)
+        - directory Informationen: to-do-Liste und allgemeine Infos und Erklärungen
+        - README.md: read me
+
+    Directory Neolog:
+        - zentrale Verwaltungsstelle der Website
+        - urls.py: leitet über URL-Patterns weiter auf (Unter-) Seiten, hier "registriert" man Unterseiten
+        - settings.py: Einstellungen für die gesamte Website. Interessant:
+            - Website nutzt Crispy und Bootstrap4 (weiß nicht genau, was das ist, aber hat mit Styling und CSS zu tun)
+            - installed apps (muss man immer hinzufügen)
+
+    Blog:
+        - zentrale Verwaltungseinheit für Definitionen (schlecht benannt, weil aus Tutorial übernommen)
+        - static/blog: enthält CSS Styling-Sheet
+        - templates/blog:
+            - base: Grundgerüst der gesamten Website, parent für quasi alle anderen Templates
+                - dafür enthält base-Templates sogenannte "Content-Blocks", die Children-Templates überschreiben
+                - benutzt Bootstrap4, das die Seite stylet
+                - hält Informationen zu Navigation Bar, ...
+            - home: Wörterbuch-Ansicht
+            - definition-detail: Detailansicht einer Definition mit Benutzer, Datum und Inhalt
+            - definition-form: Template, das für Erstellung einer Definition benutzt wird
+            - wort: Template für Wortwebsite, loopt über alle Definitionen, die es zum Wort gibt
+        - models.py:
+            - Post:
+                - Model für Definitionen (schlecht benannt, weil aus Tutorial übernommen)
+                - get_absolute_url() verweist nicht auf Post (Definition selbst), sondern auf zugehörige Wörterseite
+        - views.py:
+            - home(): listet alle Wörter alphabetisch auf Homepage auf
+            - wort_view(): handlet Wortseite. holt alle Definitionen zu einem Wort
+            - DefinitionListView: aktuell nicht in Benutzung
+            - DefinitionCreateView: handlet Erstellen von Definitionen
+            - about(): about-Seite
+
+
+    Users:
+        - zentrale Verwaltungseinheit für Benutzer
+        - templates/users:
+            - login: Login-Template
+            - logout: Ansicht, die man nach Logout erhält
+            - profile: Benutzerprofil
+            - register: Registrierungs-Template
+        - forms.py: handlet Benutzeranmeldung und Registrierung
+        - views.py: Profil- und Registrierungsansicht
+

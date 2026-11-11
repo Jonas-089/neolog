@@ -1,0 +1,47 @@
+{% extends "definitionen/base.html" %}
+{% block content %}
+    <h1>Wörterbuch</h1>
+    {% for word in words %}
+            {% ifchanged word.word|first|upper %}
+                <div class="letter-divider" id="buchstabe-{{ word.word|first|upper }}">{{ word.word|first|upper }}</div>
+            {% endifchanged %}
+            <div>
+                <a class="article-title" href="{% url 'one-word' word.word %}">{{ word.display_title }}</a>
+            </div>
+    {% endfor %}
+    {% if is_paginated %}
+        <nav class="pager" aria-label="Seiten">
+            {% if page_obj.has_previous %}
+                <a class="btn page-btn" href="?page={{ page_obj.previous_page_number }}" aria-label="Vorherige Seite">&lsaquo;</a>
+            {% else %}
+                <span class="btn page-btn disabled">&lsaquo;</span>
+            {% endif %}
+
+            {% for num in page_range %}
+                {% if num == page_obj.paginator.ELLIPSIS %}
+                    <span class="pager-dots">&hellip;</span>
+                {% elif num == page_obj.number %}
+                    <span class="btn page-btn active" aria-current="page">{{ num }}</span>
+                {% else %}
+                    <a class="btn page-btn" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn page-btn" href="?page={{ page_obj.next_page_number }}" aria-label="Nächste Seite">&rsaquo;</a>
+            {% else %}
+                <span class="btn page-btn disabled">&rsaquo;</span>
+            {% endif %}
+        </nav>
+    {% endif %}
+    <div class="jump-to">
+        <span class="jump-label">Springe zu:</span>
+        {% for buchstabe, seite in sprungmarken %}
+            {% if seite %}
+                <a href="?page={{ seite }}#buchstabe-{{ buchstabe }}">{{ buchstabe }}</a>
+            {% else %}
+                <span class="jump-empty">{{ buchstabe }}</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}
