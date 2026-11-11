@@ -4,7 +4,11 @@
 
 Informationen und Dokumentation zum Projekt/ Django: https://github.com/Jonas-089/neolog/blob/master/Informationen
 
-  
+## Screenshots
+
+| Alle Wörter | Ein Wort | Suche |
+|---|---|---|
+| ![Alle Wörter](docs/screenshots/alle-woerter.jpg) | ![Ein Wort](docs/screenshots/wort.jpg) | ![Suche](docs/screenshots/suche.jpg) |
 
 
 ## Lokal starten
