@@ -395,3 +395,29 @@ a.article-title:hover {
     pointer-events: auto;
   }
 }
+
+/* Handy (eingeklapptes Menü): "Definition hinzufügen" und "Abmelden" als schlichte schwarze Links wie die übrigen Menüpunkte */
+@media (max-width: 767.98px) {
+  .site-header .navbar-nav .nav-add-btn.btn,
+  .site-header .navbar-nav .nav-add-btn.btn:focus,
+  .site-header .navbar-nav .btn-link {
+    background: transparent;
+    color: #000000;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.5rem 0;
+    margin: 0 !important;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    text-decoration: none;
+    align-self: auto;
+  }
+
+  .site-header .navbar-nav .nav-add-btn.btn:hover,
+  .site-header .navbar-nav .btn-link:hover {
+    background: transparent;
+    color: #d63a3a;
+  }
+}
